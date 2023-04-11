@@ -1,0 +1,19 @@
+{
+  "name": "7.6-cypress.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cprss": "cypress open",
+    "cprss:mobile:hl": "cypress open -b chrome -C cypress.config.js",
+    "cprss:mobile": "cypress open -b firefox -C cypress.config.js",
+    "cprss:laptop:hl": "cypress open -b edge -C cypress2.config.js",
+    "cprss:laptop": "cypress open -b chrome -C cypress2.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.9.0"
+  }
+}
