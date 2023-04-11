@@ -46,5 +46,6 @@ Cypress.Commands.add("addBook", (title, describe, author) => {
   if (author) {
     cy.get("#authors").type(author);
   }
+  cy.get("input#favorite").click();
   cy.contains("Submit").click();
 });

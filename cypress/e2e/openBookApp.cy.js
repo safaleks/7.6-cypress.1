@@ -31,14 +31,13 @@ describe("Установка и настройка проекта", () => {
 
   it("Should not login with empty login", () => {
     cy.login(null, "test");
-    //добавить assertion
     cy.get("#mail")
       .then(($el) => $el[0].checkValidity())
       .should("be.false");
   });
 
   it("Should not login with empty password", () => {
-    cy.login("test@test.com", "");
+    cy.login("test@test.com", null);
     cy.get("#pass")
       .then(($el) => $el[0].checkValidity())
       .should("be.false");
@@ -50,19 +49,30 @@ describe("Установка и настройка проекта", () => {
     cy.get(".modal-title").should("contain", "Book description");
   });
 
+  it("Should be button with text", () => {
+    cy.login("test@test.com", "test");
+    cy.visit("/favorites");
+    cy.get(".btn > a").should(
+      "contain",
+      "Please add some book to favorit on home page!"
+    );
+  });
+
   it("Should show added book in library", () => {
     cy.login("test@test.com", "test");
     cy.addBook(
-      title.first,
+      title.second,
       "Приключения удачливого волшебника в неудачных ситуациях",
       "Терри Пратчетт"
     );
-    cy.get(".d-flex").should("contain", title.first);
+    cy.get("h4").click();
+    cy.get(".card-title").should("contain", title.second);
   });
 
-  it("should indicate book in favorite", () => {
+  it("should indicate book info in favorite", () => {
     cy.login("test@test.com", "test");
     cy.addBook(title.third, description.third, author.third);
+    cy.visit("/favorites");
     cy.contains(title.third).click();
     cy.contains(description.third);
   });

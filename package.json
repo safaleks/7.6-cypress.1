@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cprss": "cypress open",
-    "cprss:mobile:hl": "cypress open -b chrome -C cypress.config.js",
-    "cprss:mobile": "cypress open -b firefox -C cypress.config.js",
-    "cprss:laptop:hl": "cypress open -b edge -C cypress2.config.js",
-    "cprss:laptop": "cypress open -b chrome -C cypress2.config.js"
+    "cprss:mobile:hl": "npx cypress run -b chrome -C cypress.config.js",
+    "cprss:mobile": "npx cypress run -b electron --headed -C cypress.config.js",
+    "cprss:laptop:hl": "npx cypress run -b edge -C cypress2.config.js",
+    "cprss:laptop": "npx cypress run -b chrome --headed -C cypress2.config.js"
   },
   "author": "",
   "license": "ISC",
